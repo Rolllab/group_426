@@ -39,7 +39,7 @@ def solution_4_1_6(number: int) -> int:
     return len(str(number))
 
 
-def solution_4_1_7(number):
+def solution_4_1_7(number) -> bool:
     count = len(str(number))
     if count >= 4 and count % 2 == 0:
         return str(number)[:int(count/2)] == str(number)[-1:-int((count/2) + 1):-1]
