@@ -29,7 +29,7 @@ def solution_4_1_4(*args) -> min:
     return min(args)
 
 
-def solution_4_1_5(range1: int, range2: int):
+def solution_4_1_5(range1: int, range2: int) -> int:
     min_ = min([range1, range2])
     max_ = max([range1, range2])
     return reduce(lambda x, y: x * y, [i for i in range(min_, max_ + 1)])
