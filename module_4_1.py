@@ -35,7 +35,7 @@ def solution_4_1_5(range1: int, range2: int):
     return reduce(lambda x, y: x * y, [i for i in range(min_, max_ + 1)])
 
 
-def solution_4_1_6(number: int):
+def solution_4_1_6(number: int) -> int:
     return len(str(number))
 
 
