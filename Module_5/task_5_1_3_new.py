@@ -36,21 +36,25 @@ def base_program(**kwargs):
 def get_result():
     my_dict = get_user_level()
     base_program(**my_dict)
-    print('-' * 50)
-    print('Правильно отвечены слова:\n {}'.format('\n '.join([k for k, v in answers.items() if v])))
-    print('Не правильно отвечены слова:\n {}'.format('\n '.join([k for k, v in answers.items() if not v])))
-    print('-' * 50)
-    print(f'Ваша оценка - {file_level['levels'].get(str(len([k for k, v in answers.items() if v])))}')
+    dump_ = {
+        'Правильно отвечены слова': ', '.join([k for k, v in answers.items() if v]),
+        'Не правильно отвечены слова': ', '.join([k for k, v in answers.items() if not v]),
+        'Ваша оценка': file_level.get(str(len([k for k, v in answers.items() if v])))
+    }
+    with open('result.txt', 'w', encoding='utf-8') as file:
+        json.dump(dump_, file, ensure_ascii=False, indent=4)
     return True
 
 
 if __name__ == '__main__':
     with open('questions.json', encoding='utf-8') as file:
         file_ = json.load(file)
-        file_question = file_[0]
-        file_level = file_[1]
+        file_question = file_[0]['questions']
+        file_level = file_[1]['levels']
+        print(file_level)
+        print(file_question)
         words = {}
         answers = {}
-        difficulty_list = [['easy', file_question['questions'][0]], ['medium', file_question['questions'][1]], ['hard', file_question['questions'][2]]]
+        difficulty_list = [['easy', file_question[0]], ['medium', file_question[1]], ['hard', file_question[2]]]
 
         get_result()
