@@ -26,6 +26,7 @@ class Human(object):
 
 
 if __name__ == '__main__':
+
     human = Human(name='name', surname='surname', birthday='12.01.2025', phone='+71234567890', city='city', country='country')
     print(human.get_data_dict())
     human_2 = Human(name='name', surname='surname', birthday='12.01.2025', phone='+71234567890', city='city',
